@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#101824"><title>Maths4 — Comprendre les mathématiques</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/math-logo.svg"><link rel="stylesheet" href="style.css?v=20261119-phase1"></head>
+<body><aside class="sidebar" id="sidebar"><a class="brand" href="#"><span class="logo"><img src="icons/math-logo.svg" alt="Logo Maths4"></span><span><b>Maths4</b><small>COMPRENDRE · DÉMONTRER</small></span></a><nav><button class="nav active" data-view="home">⌂ <span>Vue d'ensemble</span></button><button class="nav" data-view="learn">▤ <span>Apprendre</span></button><button class="nav" data-view="exercises">✎ <span>Exercices</span></button><button class="nav" data-view="cards">◫ <span>Flashcards</span></button><button class="nav" data-view="reference">∴ <span>Référentiel</span></button><button class="nav" data-view="atelier">✧ <span>Atelier de raisonnement</span></button><button class="nav" data-view="progress">◔ <span>Progression</span></button></nav><div class="side-foot">MATHS4 · VERSION 4.0<br><small>Progression sauvegardée sur cet appareil</small></div></aside>
+<main><header class="topbar"><button id="menu" class="menu">☰</button><span>ESPACE MATHÉMATIQUES / <b id="crumb">VUE D'ENSEMBLE</b></span><span id="today"></span></header>
+<section class="view active" id="home"><div class="hero"><div><span class="eyebrow">APPRENDRE AVEC RIGUEUR</span><h1>Les maths ne se<br><em>mémorisent pas.</em><br>Elles se comprennent.</h1><p>Un espace pour construire des raisonnements solides, retenir l'essentiel et visualiser les concepts abstraits.</p><button class="primary" data-go="learn">Commencer à apprendre →</button></div><div class="hero-art"><div class="orbit"></div><strong>∫</strong><i>π</i><b>∞</b><small>THINK · PROVE · UNDERSTAND</small></div></div><div class="section-title"><div><span class="eyebrow">TON ESPACE</span><h2>Vue d'ensemble</h2></div><span class="muted">Un pas après l'autre.</span></div><div class="stats"><article><small>NOTIONS DISPONIBLES</small><strong id="sTopics">18</strong><span>Analyse et algèbre</span></article><article><small>CARTES À RÉVISER</small><strong id="sCards">24</strong><span>Définitions et théorèmes</span></article><article><small>NOTIONS MAÎTRISÉES</small><strong id="sMastered">0</strong><span>À construire progressivement</span></article><article><small>SÉANCES EFFECTUÉES</small><strong id="sSessions">0</strong><span>Sur cet appareil</span></article></div><section class="daily-learning panel" id="dailyLearning" aria-live="polite"><div class="daily-loading">Préparation de ton parcours…</div></section><div class="home-grid"><article class="panel"><span class="eyebrow">POUR PROGRESSER</span><h3>Reprendre là où tu veux</h3><div class="continue"><b>ƒ</b><div><strong>Analyse</strong><small>Limites, continuité, dérivation</small><div class="bar"><i id="analysisBar"></i></div></div><button data-go="learn">↗</button></div><div class="continue"><b class="purple">A</b><div><strong>Algèbre</strong><small>Applications linéaires, matrices, espaces vectoriels</small><div class="bar"><i id="algebraBar"></i></div></div><button data-go="learn">↗</button></div></article><article class="panel quote"><span>“</span><p>Une démonstration réussie est une idée juste, rendue inévitable par la rigueur.</p><small>LE BON RÉFLEXE</small></article></div></section>
+<section class="view" id="learn"><div class="intro"><span class="eyebrow">COURS & NOTIONS</span><h1>Apprendre avec méthode.</h1><p>Choisis une notion, comprends les définitions et propriétés, puis teste-toi.</p></div><div class="toolbar"><div class="filters" id="levels"><button class="filter active" data-level="Tous">Tout</button><button class="filter" data-level="L1">L1</button><button class="filter" data-level="L2">L2</button></div><input id="search" placeholder="Rechercher une notion…"></div><div id="topics" class="topic-grid"></div></section>
+<section class="view" id="exercises"><div class="intro"><span class="eyebrow">ENTRAÎNEMENT AUTONOME</span><h1>Exercices.</h1><p>Retrouve tous les exercices des notions dans un espace dédié. Travaille d’abord seul, puis affiche un indice ou la correction.</p></div><div class="toolbar"><div class="filters" id="exerciseDifficulty"><button class="filter active" data-ex-difficulty="Tous">Tous</button><button class="filter" data-ex-difficulty="Facile">Facile</button><button class="filter" data-ex-difficulty="Intermédiaire">Intermédiaire</button><button class="filter" data-ex-difficulty="Avancé">Avancé</button></div><input id="exerciseSearch" placeholder="Rechercher un chapitre ou un exercice…"></div><div class="exercise-summary"><span class="muted" id="exerciseCount"></span><span class="muted">Chaque exercice renvoie directement à sa fiche de cours.</span></div><div id="exerciseList" class="exercise-list"></div></section>
+<section class="view" id="topic"><button class="back" data-go="learn">← Retour aux notions</button><div id="topicContent"></div></section>
+<section class="view" id="cards">
+ <div class="intro"><span class="eyebrow">MÉMORISATION ACTIVE</span><h1>Flashcards.</h1><p>Essaie de retrouver la réponse avant de retourner la carte, puis évalue honnêtement ton rappel.</p></div>
+ <div class="card-tools panel">
+  <div class="toolbar">
+   <div class="filters"><button class="filter active" data-cat="Toutes">Toutes</button><button class="filter" data-cat="Analyse">Analyse</button><button class="filter" data-cat="Algèbre">Algèbre</button><button class="filter" id="dueToggle">À réviser</button></div>
+   <span id="cardCount" class="muted"></span>
+  </div>
+  <div class="card-stats">
+   <article><strong id="cardDueCount">0</strong><span>À réviser</span></article>
+   <article><strong id="cardLearnedCount">0</strong><span>Déjà maîtrisées</span></article>
+   <article><strong id="cardScheduledCount">0</strong><span>Programmées</span></article>
+  </div>
+ </div>
+ <div class="flash-wrap">
+  <div class="flash-progress"><span id="cardCounter">Carte 1</span><span id="cardStatus" class="status-pill">Non évaluée</span></div>
+  <div class="flash-scene" id="flashScene" role="button" tabindex="0" aria-label="Retourner la flashcard">
+   <div class="flash-inner" id="flashInner">
+    <article class="flash-face flash-front">
+     <div class="flash-face-head"><span class="flash-badge" id="cardMeta">ANALYSE · L1</span><span class="flash-hint">↻ Cliquer pour retourner</span></div>
+     <div class="flash-main"><small>QUESTION</small><strong id="cardQuestion">Chargement…</strong></div>
+     <div class="flash-face-foot">RECTO · QUESTION DE COURS</div>
+    </article>
+    <article class="flash-face flash-back">
+     <div class="flash-face-head"><span class="flash-badge answer-badge">RÉPONSE</span><span class="flash-hint">↻ Retourner</span></div>
+     <div class="flash-main answer-main"><small>ÉLÉMENTS DE RÉPONSE</small><div id="cardAnswer"></div></div>
+     <div class="flash-face-foot">VERSO · PRENDS LE TEMPS DE COMPRENDRE</div>
+    </article>
+   </div>
+  </div>
+  <div class="actions">
+   <button class="secondary" id="prev">← Précédente</button>
+   <button class="primary" id="flip">Voir la réponse ↻</button>
+   <button class="secondary" id="next">Suivante →</button>
+  </div>
+  <div class="ratings" id="ratings" hidden>
+   <span>Comment as-tu retrouvé la réponse ?</span>
+   <button data-rate="again">À revoir · 1 j</button><button data-rate="hard">Difficile</button><button data-rate="good">Bien</button><button data-rate="easy">Facile</button>
+  </div>
+ </div>
+</section>
+<section class="view" id="atelier">
+ <div class="intro"><span class="eyebrow">ATELIER DE RAISONNEMENT</span><h1>Apprendre à démontrer.</h1><p>Un tuteur qui te guide sans faire le travail à ta place, et un regard critique sur tes démonstrations manuscrites.</p></div>
+ <div class="atelier-grid atelier-grid-ai">
+  <article class="panel atelier-panel">
+   <div class="atelier-kicker">01 · TUTEUR MATHÉMATIQUE</div><h2>Ton entraînement, avec un vrai dialogue.</h2>
+   <label class="atelier-label" for="coachExerciseSearch">Rechercher un exercice</label>
+   <input id="coachExerciseSearch" class="atelier-search" type="search" placeholder="Chapitre, notion, difficulté…">
+   <label class="atelier-label" for="coachExercise">Exercices disponibles</label>
+   <select id="coachExercise" class="atelier-select" size="1"><option>Chargement des exercices…</option></select>
+   <div class="atelier-question"><span class="eyebrow">ÉNONCÉ</span><p id="coachPrompt">Choisis un exercice pour commencer.</p></div>
+   <div class="coach-chat" id="coachChat" aria-live="polite"><div class="coach-welcome"><strong>Commençons par ton raisonnement.</strong><p>Résous l'exercice sur ta feuille, puis envoie une photo de ta démarche. Le tuteur l'examinera et t'aidera à trouver la prochaine étape.</p></div></div>
+   <div class="coach-composer">
+    <label class="atelier-label">Ta démarche sur feuille</label>
+    <label class="coach-upload" for="coachImage"><span class="coach-upload-icon">＋</span><span><strong>Ajouter une photo de ta démarche</strong><small>JPG, PNG ou WebP · 8 Mo maximum</small></span><input id="coachImage" type="file" accept="image/jpeg,image/png,image/webp" capture="environment"></label>
+    <div id="coachPhotoPreviewWrap" class="coach-photo-preview" hidden><img id="coachPhotoPreview" alt="Aperçu de ta démarche manuscrite"><button class="secondary" id="removeCoachPhoto" type="button">Retirer la photo</button></div>
+    <label class="atelier-label" for="coachQuestion">Question complémentaire <span class="muted">(facultatif)</span></label>
+    <input id="coachQuestion" class="atelier-search" type="text" maxlength="500" placeholder="Ex. : Je bloque à cette étape…">
+    <div class="atelier-actions coach-actions"><button class="primary" id="coachSend">Envoyer au tuteur</button><button class="secondary" id="coachHint1">Indice progressif</button><button class="secondary" id="coachReview">Faire relire ma démarche</button></div>
+   </div>
+   <div class="atelier-footnote" id="coachStatus" aria-live="polite">Le tuteur IA se connectera dès que le serveur sécurisé sera configuré.</div>
+   <button class="text-button" id="coachReset">Réinitialiser cette séance</button>
+  </article>
+
+ </div>
+ <div class="atelier-footer"><span>TES BROUILLONS RESTENT SUR CET APPAREIL</span><span>Maths4 · Tuteur & démonstrations</span></div>
+</section>
+<section class="view" id="reference"><div class="intro"><span class="eyebrow">BOÎTE À OUTILS</span><h1>Référentiel mathématique.</h1><p>Définitions et théorèmes essentiels à retrouver rapidement.</p></div><input id="refSearch" class="search-wide" placeholder="Rechercher une définition ou un théorème…"><div id="refs" class="ref-list"></div></section>
+<section class="view" id="progress"><div class="intro"><span class="eyebrow">RÉGULARITÉ & MAÎTRISE</span><h1>Ta progression.</h1><p>Construis des connaissances durables, sans chercher à aller vite.</p></div><div class="progress-grid"><article class="panel"><small>NOTIONS MAÎTRISÉES</small><div class="progress-number"><strong id="percent">0%</strong><span id="progressCount">0 notion sur 18</span></div><div class="bar big"><i id="progressBar"></i></div><p class="muted">Marque une notion comme maîtrisée après avoir su l'expliquer et résoudre un exercice sans aide.</p></article><article class="panel"><small>SÉANCES ENREGISTRÉES</small><strong class="big-number" id="sessions">0</strong><button class="secondary" id="addSession">+ Enregistrer une séance</button></article></div><div class="section-title"><h2>Révisions espacées</h2></div><div id="reviewSummary" class="review-summary"></div><div class="section-title"><h2>Suivi par notion</h2></div><div id="progressList" class="ref-list"></div><button id="reset" class="reset">Réinitialiser la progression locale</button></section>
+<footer>∑ MATHS4 <span>Comprendre · Démontrer · Maîtriser</span></footer></main><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"],["$","$"]],displayMath:[["\\[","\\]"]],processEscapes:true},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]},startup:{typeset:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" onload="MathJax.typesetPromise().catch(function(e){console.error('MathJax',e)})"></script><script src="data.js?v=20261118-derivative1"></script><script src="app.js?v=20261118-refmath2"></script><script src="ai-config.js?v=20261118-ai1"></script><script src="atelier.js?v=20261119-atelier2"></script><script src="learning.js?v=20261119-phase1"></script>
+<script>
+/* Navigation de secours : le cours reste accessible même si un autre module JS échoue. */
+(()=>{
+  const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const labels={home:"VUE D'ENSEMBLE",learn:'APPRENDRE',exercises:'EXERCICES',topic:'NOTION',cards:'FLASHCARDS',reference:'RÉFÉRENTIEL',progress:'PROGRESSION'};
+  function show(id){
+    if(!$('#'+id)) return;
+    $$('.view').forEach(v=>v.classList.toggle('active',v.id===id));
+    $$('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view===id||(id==='topic'&&b.dataset.view==='learn')));
+    const crumb=$('#crumb'); if(crumb) crumb.textContent=labels[id]||id.toUpperCase();
+    $('#sidebar')?.classList.remove('open');
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  function fallbackTopics(){
+    const host=$('#topics'); if(!host||host.children.length||typeof TOPICS==='undefined'||!Array.isArray(TOPICS)) return;
+    host.innerHTML=TOPICS.map(t=>`<article class="topic-card" data-fallback-topic="${t.id}" tabindex="0"><div class="meta"><span class="pill">${t.level}</span><span class="pill">${t.category}</span></div><h3>${t.title}</h3><p>${t.desc||''}</p><div class="topic-foot"><span>À découvrir</span><b>↗</b></div></article>`).join('');
+  }
+  function fallbackTopic(id){
+    const t=(typeof TOPICS==='undefined'?[]:TOPICS).find(x=>x.id===id); if(!t)return;
+    const host=$('#topicContent'); if(!host)return;
+    host.innerHTML=`<div class="detail-head"><div class="meta"><span class="pill">${t.level}</span><span class="pill">${t.category}</span></div><h1>${t.title}</h1><p>${t.desc||''}</p></div><div class="detail-columns"><article class="detail-block"><h3>Définition</h3><p>${t.definition||''}</p><div class="formula">${t.formula||''}</div><h3>Propriétés essentielles</h3><ul>${(t.props||[]).map(x=>`<li>${x}</li>`).join('')}</ul></article><aside class="detail-block"><h3>À retenir</h3><p>Vérifie toujours les hypothèses avant d'appliquer un résultat.</p></aside></div><div class="exercise"><h3>Exercice</h3><p>${t.exercise||'Reformule la définition et donne un exemple.'}</p><button class="secondary" id="fallbackHint">Afficher un indice</button><div id="fallbackHintText" class="answer hint" hidden>${t.hint||''}</div><button class="secondary" id="fallbackAnswer">Afficher la correction</button><div id="fallbackAnswerText" class="answer" hidden>${t.answer||''}</div></div>`;
+    $('#fallbackHint')?.addEventListener('click',()=>$('#fallbackHintText').hidden=!$('#fallbackHintText').hidden);
+    $('#fallbackAnswer')?.addEventListener('click',()=>$('#fallbackAnswerText').hidden=!$('#fallbackAnswerText').hidden);
+    show('topic');
+  }
+  let fallbackExerciseLevel='Tous', fallbackExerciseCategory='Toutes';
+  function fallbackExercises(){
+    const host=$('#exerciseList'); if(!host||typeof TOPICS==='undefined'||!Array.isArray(TOPICS)) return;
+    const q=($('#exerciseSearch')?.value||'').trim().toLocaleLowerCase('fr');
+    const list=TOPICS.filter(t=>t.exercise&&
+      (fallbackExerciseLevel==='Tous'||t.level===fallbackExerciseLevel)&&
+      (fallbackExerciseCategory==='Toutes'||t.category===fallbackExerciseCategory)&&
+      (String(t.title||'')+' '+String(t.exercise||'')+' '+String(t.desc||'')).toLocaleLowerCase('fr').includes(q));
+    host.innerHTML=list.map(t=>`<article class="exercise-card">
+      <div class="meta"><span class="pill">${t.level}</span><span class="pill">${t.category}</span></div>
+      <h3>${t.title}</h3><p>${t.exercise}</p>
+      <div class="exercise-actions">
+        <button class="secondary" data-fallback-ex-hint="${t.id}">Afficher un indice</button>
+        <button class="secondary" data-fallback-ex-answer="${t.id}">Afficher la correction</button>
+        <button class="primary" data-fallback-open-topic="${t.id}">Ouvrir le cours →</button>
+      </div>
+      <div class="answer hint" id="fallback-ex-hint-${t.id}" hidden>${t.hint||'Aucun indice disponible.'}</div>
+      <div class="answer" id="fallback-ex-answer-${t.id}" hidden>${t.answer||'Aucune correction disponible.'}</div>
+    </article>`).join('')||'<p class="muted">Aucun exercice ne correspond à cette recherche.</p>';
+    const count=$('#exerciseCount'); if(count) count.textContent=`${list.length} exercice(s)`;
+  }
+  if(!window.__MATHS2_APP_READY__){
+    fallbackExercises();
+    $('#exerciseSearch')?.addEventListener('input',fallbackExercises);
+    document.querySelectorAll('[data-ex-level]').forEach(b=>b.addEventListener('click',()=>{
+      fallbackExerciseLevel=b.dataset.exLevel;
+      document.querySelectorAll('[data-ex-level]').forEach(x=>x.classList.toggle('active',x===b));
+      fallbackExercises();
+    }));
+    document.querySelectorAll('[data-ex-category]').forEach(b=>b.addEventListener('click',()=>{
+      fallbackExerciseCategory=b.dataset.exCategory;
+      document.querySelectorAll('[data-ex-category]').forEach(x=>x.classList.toggle('active',x===b));
+      fallbackExercises();
+    }));
+    document.addEventListener('click',e=>{
+      const hint=e.target.closest('[data-fallback-ex-hint]');
+      const answer=e.target.closest('[data-fallback-ex-answer]');
+      const open=e.target.closest('[data-fallback-open-topic]');
+      if(hint){const el=$('#fallback-ex-hint-'+hint.dataset.fallbackExHint);if(el)el.hidden=!el.hidden;}
+      if(answer){const el=$('#fallback-ex-answer-'+answer.dataset.fallbackExAnswer);if(el)el.hidden=!el.hidden;}
+      if(open){e.preventDefault();fallbackTopic(open.dataset.fallbackOpenTopic);}
+    });
+  }
+  document.addEventListener('click',e=>{
+    if(window.__MATHS2_APP_READY__) return;
+    const nav=e.target.closest('[data-view]');
+    const go=e.target.closest('[data-go]');
+    const card=e.target.closest('[data-fallback-topic]');
+    if(nav){e.preventDefault();e.stopImmediatePropagation();show(nav.dataset.view);if(nav.dataset.view==='learn')fallbackTopics();return;}
+    if(go){e.preventDefault();e.stopImmediatePropagation();show(go.dataset.go);if(go.dataset.go==='learn')fallbackTopics();return;}
+    if(card){e.preventDefault();e.stopImmediatePropagation();fallbackTopic(card.dataset.fallbackTopic);}
+  },true);
+  if(!window.__MATHS2_APP_READY__){fallbackTopics();}
+})();
+</script><script>
+/* Ouverture du cours garantie depuis chaque exercice, même si le script principal rencontre une erreur. */
+(()=>{
+ const $=s=>document.querySelector(s);
+ function fallbackOpen(id){
+  const t=(typeof TOPICS!=='undefined'?TOPICS:[]).find(x=>String(x.id)===String(id));
+  if(!t)return;
+  const host=$('#topicContent'),view=$('#topic');if(!host||!view)return;
+  host.innerHTML='<div class="detail-head"><div class="meta"><span class="pill">'+t.level+'</span><span class="pill">'+t.category+'</span></div><h1>'+t.title+'</h1><p>'+(t.desc||'')+'</p></div><div class="detail-columns"><article class="detail-block"><h3>Définition</h3><p>'+(t.definition||'')+'</p><div class="formula">'+(t.formula||'')+'</div><h3>Propriétés essentielles</h3><ul>'+(t.props||[]).map(p=>'<li>'+p+'</li>').join('')+'</ul></article><aside class="detail-block"><h3>Exercice du cours</h3><p>'+(t.exercise||'')+'</p><h3>Indice</h3><p>'+(t.hint||'')+'</p><h3>Correction</h3><p>'+(t.answer||'')+'</p></aside></div>';
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v===view));
+  document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.view==='learn'));
+  const crumb=$('#crumb');if(crumb)crumb.textContent='NOTION';
+  $('#sidebar')?.classList.remove('open');window.scrollTo({top:0,behavior:'auto'});
+ }
+ document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-open-topic],[data-fallback-open-topic]');
+  if(!b)return;
+  e.preventDefault();e.stopImmediatePropagation();
+  const id=b.dataset.openTopic||b.dataset.fallbackOpenTopic;
+  if(typeof window.openMaths4Course==='function')window.openMaths4Course(id);else fallbackOpen(id);
+ },true);
+})();
+</script>
+<script>
+
+</script>
+
+<script>
+/* Filtre de secours des exercices : fonctionne même si le rendu principal est interrompu. */
+document.addEventListener('click',function(e){
+ const b=e.target.closest('#exerciseDifficulty [data-ex-difficulty]');
+ if(!b)return;
+ const level=b.dataset.exDifficulty;
+ document.querySelectorAll('#exerciseDifficulty [data-ex-difficulty]').forEach(x=>x.classList.toggle('active',x===b));
+ const chapters=[...document.querySelectorAll('#exerciseList .exercise-chapter')];
+ let count=0;
+ document.querySelectorAll('#exerciseList .exercise-item').forEach(card=>{
+  const pill=card.querySelector('.difficulty-pill');
+  const visible=level==='Tous'||(pill&&pill.textContent.trim()===level);
+  card.hidden=!visible;
+  if(visible)count++;
+ });
+ chapters.forEach(ch=>{ch.hidden=!ch.querySelector('.exercise-item:not([hidden])');});
+ const counter=document.querySelector('#exerciseCount');
+ if(counter)counter.textContent=count+' exercice(s)';
+},false);
+</script>
+</body></html>
